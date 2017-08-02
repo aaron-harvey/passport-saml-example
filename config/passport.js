@@ -1,32 +1,20 @@
-const SamlStrategy = require('passport-saml').Strategy;
+const loadMetadata = require('passport-saml-metadata');
+const SamlStrategy = require('passport-saml-restify').Strategy;
 
 module.exports = function (passport, config) {
+  loadMetadata(config.passport.saml.metadata)
+    .then(function (strategyConfig) {
+      console.log('Using SAML configuration', strategyConfig);
 
-  passport.serializeUser(function (user, done) {
-    done(null, user);
-  });
-
-  passport.deserializeUser(function (user, done) {
-    done(null, user);
-  });
-
-  passport.use(new SamlStrategy(
-    {
-      path: config.passport.saml.path,
-      entryPoint: config.passport.saml.entryPoint,
-      issuer: config.passport.saml.issuer,
-      cert: config.passport.saml.cert
-    },
-    function (profile, done) {
-      return done(null,
-        {
-          id: profile.uid,
-          email: profile.email,
-          displayName: profile.cn,
-          firstName: profile.givenName,
-          lastName: profile.sn
-        });
+      passport.use(new SamlStrategy(
+        Object.assign(strategyConfig, {
+          path: config.passport.saml.path,
+          issuer: config.passport.saml.issuer
+        }),
+        function (profile, done) {
+          return done(null, profile);
+        }
+      ));
     })
-  );
-
+    .catch((err) => console.error.bind(console));
 };
