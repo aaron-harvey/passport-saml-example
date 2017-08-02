@@ -2,3 +2,5 @@
 /bower_components
 /public
 /.idea
+.env
+/.DS_Store

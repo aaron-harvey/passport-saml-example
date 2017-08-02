@@ -1,3 +1,6 @@
+const os = require('os');
+const fileCache = require('file-system-cache').default;
+
 module.exports = {
   development: {
     app: {
@@ -8,9 +11,12 @@ module.exports = {
       strategy: 'saml',
       saml: {
         path: process.env.SAML_PATH || '/login/callback',
-        entryPoint: process.env.SAML_ENTRY_POINT || 'https://openidp.feide.no/simplesaml/saml2/idp/SSOService.php',
-        issuer: 'passport-saml',
-        cert: process.env.SAML_CERT || null
+        issuer: process.env.SAML_ISSUER || 'passport-saml',
+        metadata: {
+          url: process.env.SAML_METADATA,
+          timeout: 1500,
+          backupStore: fileCache({ basePath: os.tmpdir() })
+        }
       }
     }
   }

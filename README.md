@@ -1,32 +1,27 @@
-PassportJS SAML example
-=======================
-
-[![Build Status](https://travis-ci.org/gbraad/passport-saml-example.svg?branch=master)](https://travis-ci.org/gbraad/passport-saml-example)
-[![Code Climate](https://codeclimate.com/github/gbraad/passport-saml-example/badges/gpa.svg)](https://codeclimate.com/github/gbraad/passport-saml-example)
-
+PassportJS SAML authentication example
+======================================
 
 Description
 -----------
 
-An example to demonstrate the use of the [Passport-SAML](https://github.com/bergie/passport-saml) Authentication provider for PassportJS.
+An example to demonstrate the use of the [passport-saml-restify](https://github.com/jameswomack/passport-saml-restify) authentication provider for PassportJS with configuration loaded from metadata by [passport-saml-metadata](https://github.com/compwright/passport-saml-metadata).
 
+Tested with Active Directory.
 
 Usage
 -----
 
 ```bash
 $ npm install
-$ bower install
 $ npm start
 ```
-
 
 Authors
 -------
 
-| [!["Gerard Braad"](http://gravatar.com/avatar/e466994eea3c2a1672564e45aca844d0.png?s=60)](http://gbraad.nl "Gerard Braad <me@gbraad.nl>") |
+| [!["Jonathon Hill"](http://gravatar.com/avatar/0954b07694d217460222ae1dc5fa9c40.png?s=60)](http://jonathonhill.net "Jonathon Hill <jhill9693@gmail.com>") | [!["Gerard Braad"](http://gravatar.com/avatar/e466994eea3c2a1672564e45aca844d0.png?s=60)](http://gbraad.nl "Gerard Braad <me@gbraad.nl>") |
 |---|
-| [@gbraad](https://twitter.com/gbraad) |
+| [@compwright](https://twitter.com/compwright) | [@gbraad](https://twitter.com/gbraad) |
 
 
 License

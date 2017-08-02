@@ -1,13 +1,17 @@
 {
   "name": "passport-saml-example",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Example for PassportJS SAML strategy",
   "author": {
-    "name": "Gerard Braad",
-    "email": "me@gbraad.nl",
-    "url": "http://gbraad.nl"
+    "name": "Jonathon Hill",
+    "email": "jhill9693@gmail.com",
+    "url": "http://jonathonhill.net"
   },
   "contributors": [
+    {
+      "name": "Gerard Braad",
+      "email": "me@gbraad.nl"
+    },
     {
       "name": "Christian Kuster",
       "email": "git@kusti.ch"
@@ -15,11 +19,15 @@
   ],
   "keywords": [
     "saml",
-    "sso"
+    "sso",
+    "passport",
+    "adfs",
+    "active directory",
+    "metadata"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/gbraad/passport-saml-example.git"
+    "url": "https://github.com/compwright/passport-saml-example.git"
   },
   "scripts": {
     "start": "nodemon app.js",
@@ -29,20 +37,24 @@
   "dependencies": {
     "body-parser": "1.15.1",
     "cookie-parser": "1.4.3",
+    "dotenv": "^4.0.0",
     "errorhandler": "1.4.3",
     "express": "4.13.4",
     "express-session": "1.13.0",
+    "file-system-cache": "^1.0.5",
     "jade": "1.11.0",
     "morgan": "1.7.0",
     "nodemon": "1.9.2",
     "passport": "0.3.2",
-    "passport-saml": "0.15.0"
+    "passport-saml-metadata": "^1.0.1",
+    "passport-saml-restify": "^1.0.5"
   },
   "devDependencies": {
-    "bower": "1.7.9"
+    "bower": "1.7.9",
+    "nodemon": "^1.9.2"
   },
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">= 6.5.0"
   },
   "license": "MIT"
 }
