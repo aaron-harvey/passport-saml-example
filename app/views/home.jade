@@ -2,7 +2,7 @@ extends layout
 
 block content
 	if user !== null
-		h1 Hello, #{user.firstName}
+		h1 Hello, #{user.givenName}
 		a(href="/profile") Profile
 		br
 		a(href="/logout") Logout

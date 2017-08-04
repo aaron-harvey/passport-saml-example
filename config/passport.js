@@ -1,20 +1,39 @@
-const loadMetadata = require('passport-saml-metadata');
-const SamlStrategy = require('passport-saml-restify').Strategy;
+const SAML = require('passport-saml').SAML;
+const metadata = require('passport-saml-metadata');
+const SamlStrategy = require('passport-wsfed-saml2').Strategy;
 
-module.exports = function (passport, config) {
-  loadMetadata(config.passport.saml.metadata)
-    .then(function (strategyConfig) {
-      console.log('Using SAML configuration', strategyConfig);
+module.exports = function (app, passport, config) {
+  metadata.fetch(config.passport.saml.metadata)
+    .then(function (reader) {
+      const strategyConfig = metadata.toPassportConfig(reader);
+      strategyConfig.realm = config.passport.saml.issuer,
+      strategyConfig.protocol = 'samlp';
 
-      passport.use(new SamlStrategy(
-        Object.assign(strategyConfig, {
-          path: config.passport.saml.path,
-          issuer: config.passport.saml.issuer
-        }),
-        function (profile, done) {
-          return done(null, profile);
-        }
-      ));
+      passport.use('saml', new SamlStrategy(strategyConfig, function (profile, done) {
+        profile = metadata.claimsToCamelCase(profile, reader.claimSchema);
+        return done(null, profile);
+      }));
+
+      passport.serializeUser(function(user, done) {
+        done(null, user);
+      });
+
+      passport.deserializeUser(function(user, done) {
+        done(null, user);
+      });
+
+      app.get('/FederationMetadata/2007-06/FederationMetadata.xml', function(req, res) {
+        const saml = new SAML({
+          issuer: config.passport.saml.issuer,
+          callbackUrl: config.passport.saml.callbackUrl,
+          logoutCallbackUrl: config.passport.saml.logoutCallbackUrl
+        });
+        const xml = saml.generateServiceProviderMetadata();
+        res.set('Content-Type', 'application/samlmetadata+xml').send(xml);
+      });
     })
-    .catch((err) => console.error.bind(console));
+    .catch((e) => {
+      console.error(e);
+      process.exit();
+    });
 };
