@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const errorhandler = require('errorhandler');
+const metadata = require('passport-saml-metadata').metadata;
 const getSsl = require('./ssl');
 
 const env = process.env.NODE_ENV || 'development';
@@ -36,6 +37,8 @@ require('./config/passport')(app, passport, config);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+
+metadata(app)(config.passport.saml);
 
 require('./config/routes')(app, config, passport);
 

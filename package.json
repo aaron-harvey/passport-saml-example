@@ -46,8 +46,7 @@
     "jade": "1.11.0",
     "morgan": "1.7.0",
     "passport": "0.3.2",
-    "passport-saml": "^0.15.0",
-    "passport-saml-metadata": "^1.0.1",
+    "passport-saml-metadata": "^1.2.0",
     "passport-wsfed-saml2": "^3.0.2",
     "pem-promise": "^1.0.0"
   },
