@@ -21,5 +21,8 @@ module.exports = function (app, passport, config) {
         done(null, user);
       });
     })
-    .catch(console.error.bind(console));
+    .catch((err) => {
+      console.error('Error loading SAML metadata', err);
+      process.exit(1);
+    });
 };
