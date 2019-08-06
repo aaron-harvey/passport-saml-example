@@ -36,7 +36,7 @@ require('./config/passport')(app, passport, config);
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname)));
 
 metadata(app)(config.passport.saml);
 

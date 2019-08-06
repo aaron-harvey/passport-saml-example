@@ -1,6 +1,6 @@
 {
   "name": "passport-saml-example",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Example for PassportJS SAML strategy",
   "author": {
     "name": "Jonathon Hill",
@@ -15,6 +15,10 @@
     {
       "name": "Christian Kuster",
       "email": "git@kusti.ch"
+    },
+    {
+      "name": "Aaron Harvey",
+      "email": "aaron.harvey@onsemi.com"
     }
   ],
   "keywords": [
@@ -27,34 +31,35 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/compwright/passport-saml-example.git"
+    "url": "https://github.com/aaron-harvey/passport-saml-example.git"
   },
   "scripts": {
     "start": "nodemon app.js",
-    "test": "",
-    "postinstall": "bower install"
+    "test": ""
   },
   "dependencies": {
-    "body-parser": "1.15.1",
-    "cookie-parser": "1.4.3",
-    "dotenv": "^4.0.0",
-    "errorhandler": "1.4.3",
-    "express": "4.13.4",
-    "express-session": "1.13.0",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.0.0",
+    "errorhandler": "^1.5.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "file-system-cache": "^1.0.5",
-    "jade": "1.11.0",
-    "morgan": "1.7.0",
-    "passport": "0.3.2",
-    "passport-saml-metadata": "^1.2.0",
-    "passport-wsfed-saml2": "^3.0.2",
-    "pem-promise": "^1.0.0"
+    "jade": "^1.11.0",
+    "jquery": "^3.4.1",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-saml-metadata": "^1.6.0",
+    "passport-wsfed-saml2": "3.0.14",
+    "pem-promise": "^1.0.0",
+    "popper": "^1.0.1"
   },
   "devDependencies": {
-    "bower": "1.7.9",
-    "nodemon": "^1.9.2"
+    "nodemon": "^1.19.1"
   },
   "engines": {
-    "node": ">= 6.5.0"
+    "node": ">= 8.15.0"
   },
   "license": "MIT"
 }
