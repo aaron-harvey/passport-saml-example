@@ -1,6 +1,6 @@
 {
   "name": "passport-saml-example",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Example for PassportJS SAML strategy",
   "author": {
     "name": "Jonathon Hill",

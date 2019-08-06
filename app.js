@@ -38,7 +38,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname)));
 
-metadata(app)(config.passport.saml);
+metadata(config.passport.saml).bind(app)();
 
 require('./config/routes')(app, config, passport);
 
